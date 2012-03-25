@@ -1,5 +1,5 @@
 /*
- * grunt-bbb
+ * bbb
  * https://github.com/timbranyen/bbb
  *
  * Copyright (c) 2012 Tim branyen (tbranyen)
