@@ -1,6 +1,15 @@
 #!/usr/bin/env node
 try {
-  require("grunt").npmTasks("bbb").cli();
+  var grunt = require("grunt");
+
+  // Load the BBB task
+  grunt.npmTasks("bbb");
+
+  // Attempt to remap here
+  grunt.registerTask("init", "init:bbb");
+
+  // Initialize the CLI
+  grunt.cli();
 } catch(e) {
   console.log(e.stack + "\n");
   [ "An error occurred while loading grunt, please ensure that it has been",

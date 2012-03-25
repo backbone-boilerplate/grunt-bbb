@@ -7,7 +7,7 @@
  * http://benalman.com/about/license/
  */
 
-module.exports = function(init, done) {
+module.exports = function(grunt, init, done) { with(grunt) {
 
   var prompts = task.helper("prompt_for_obj");
 
@@ -34,4 +34,4 @@ module.exports = function(init, done) {
     done();
   });
 
-};
+}};
