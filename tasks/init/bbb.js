@@ -1,31 +1,38 @@
-/*
- * backbone-boilerplate
- * https://github.com/cowboy/grunt
- *
- * Copyright (c) 2012 "Cowboy" Ben Alman
- * Licensed under the MIT license.
- * http://benalman.com/about/license/
- */
+exports.description = "Backbone Boilerplate scaffolding and build tool";
+exports.notes = "...";
 
-module.exports = function(grunt, init, done) { with(grunt) {
+exports.template = function(grunt, init, done) {
+  // Grunt utilities.
+  var task = grunt.task;
+  var file = grunt.file;
+  var utils = grunt.utils;
+  var log = grunt.log;
+  var verbose = grunt.verbose;
+  var fail = grunt.fail;
+  var option = grunt.option;
+  var config = grunt.config;
+  var template = grunt.template;
+  var _ = grunt.utils._;
 
-  var prompts = task.helper("prompt_for_obj");
+  var prompts = grunt.helper("prompt_for_obj");
 
-  underscore.extend(prompts, {
+  _.extend(prompts, {
     bbb_namespace: {
       message: 'Project namespace',
       validator: /^[\w\-\.]+$/
     }
   });
 
-  task.helper("prompt", {}, [
+  grunt.helper("prompt", {}, [
     // Prompt for these values.
-    task.helper("prompt_for", "bbb_namespace")
+    grunt.helper("prompt_for", "bbb_namespace")
   ], function(err, props) {
     props.namespace = props["bbb_namespace"];
 
     // Files to copy (and process).
     var files = init.filesToCopy(props);
+
+    console.log(files);
 
     // Actually copy (and process). files.
     init.copyAndProcess(files, props);
@@ -34,4 +41,4 @@ module.exports = function(grunt, init, done) { with(grunt) {
     done();
   });
 
-}};
+};

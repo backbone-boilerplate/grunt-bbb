@@ -1,20 +1,8 @@
 #!/usr/bin/env node
-try {
-  var grunt = require("grunt");
+var grunt = require("grunt");
 
-  // Load the BBB task
-  grunt.npmTasks("bbb");
+// Load the BBB tasks
+grunt.loadTasks(__dirname + "/../tasks");
 
-  // Attempt to remap here
-  grunt.registerTask("init", "init:bbb");
-
-  // Initialize the CLI
-  grunt.cli();
-} catch(e) {
-  console.log(e.stack + "\n");
-  [ "An error occurred while loading grunt, please ensure that it has been",
-    "installed correctly before continuing. You can learn more about grunt",
-    "at the grunt project page, https://github.com/cowboy/grunt/"
-  ].forEach(function(s) { console.log(s); });
-  process.exit(31);
-}
+// Initialize the CLI
+grunt.cli();
