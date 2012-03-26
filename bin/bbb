@@ -12,7 +12,7 @@ var taskList = fs.readdirSync(__dirname + buildTasks).filter(function(task) {
   return fs.statSync(__dirname + buildTasks + task).isDirectory();
 }).map(function(task) {
   return resolve(__dirname + buildTasks + task);
-}).concat([resolve(__dirname + buildTasks), resolve(__dirname + "../tasks")]);
+}).concat([resolve(__dirname + buildTasks), resolve(__dirname + "/../tasks")]);
 
 // Initialize the CLI
 grunt.npmTasks("bbb").cli({
