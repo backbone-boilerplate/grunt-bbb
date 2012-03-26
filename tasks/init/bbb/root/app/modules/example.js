@@ -9,13 +9,13 @@ define([
   // Plugins
 ],
 
-function(namespace, Backbone) {
+function({%= namespace %}, Backbone) {
 
   // Shorthand the application namespace
   var app = {%= namespace %}.app;
 
   // Create a new module
-  var Example = namespace.module();
+  var Example = {%= namespace %}.module();
 
   // Example extendings
   Example.Model = Backbone.Model.extend({ /* ... */ });
@@ -30,7 +30,7 @@ function(namespace, Backbone) {
       var view = this;
 
       // Fetch the template, render it to the View element and call done.
-      namespace.fetchTemplate(this.template, function(tmpl) {
+      {%= namespace %}.fetchTemplate(this.template, function(tmpl) {
         view.el.innerHTML = tmpl();
 
         // If a done function is passed, call it with the element

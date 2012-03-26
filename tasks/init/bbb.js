@@ -34,7 +34,7 @@ exports.template = function(grunt, init, done) {
     var files = init.filesToCopy(props);
 
     // Actually copy (and process). files.
-    init.copyAndProcess(files, props);
+    init.copyAndProcess(files, props, { noProcess: "assets/**" });
 
     // All done!
     done();
