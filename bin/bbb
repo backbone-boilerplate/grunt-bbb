@@ -1,11 +1,21 @@
 #!/usr/bin/env node
 var grunt = require("grunt");
 var path = require("path");
+var fs = require("fs");
+
+// Shorten the path name and resolve function
+var buildTasks = "/../node_modules/build-tasks/";
+var resolve = path.resolve;
+
+// Auto-load tasks
+var taskList = fs.readdirSync(__dirname + buildTasks).filter(function(task) {
+  return fs.statSync(__dirname + buildTasks + task).isDirectory();
+}).map(function(task) {
+  return resolve(__dirname + buildTasks + task);
+}).concat([resolve(__dirname + buildTasks), resolve(__dirname + "../tasks")]);
 
 // Initialize the CLI
 grunt.npmTasks("bbb").cli({
-
   // Load the BBB tasks
-  tasks: [path.resolve(__dirname + "/../tasks")]
-
-});
+  tasks: taskList
+}, function() {});

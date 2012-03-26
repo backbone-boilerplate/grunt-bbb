@@ -16,7 +16,8 @@
     "url": "https://github.com/timbranyen/bbb/issues"
   },
   "dependencies": {
-    "grunt": "~0.3.2"
+    "grunt": "~0.3.2",
+    "build-tasks": "*"
   },
   "devDependencies": {
     "grunt": "~0.3.0"
