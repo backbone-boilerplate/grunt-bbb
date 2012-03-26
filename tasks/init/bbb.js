@@ -2,6 +2,7 @@ exports.description = "Backbone Boilerplate scaffolding and build tool";
 exports.notes = "...";
 
 exports.template = function(grunt, init, done) {
+
   // Grunt utilities.
   var task = grunt.task;
   var file = grunt.file;
@@ -31,10 +32,6 @@ exports.template = function(grunt, init, done) {
 
     // Files to copy (and process).
     var files = init.filesToCopy(props);
-
-    _.each(files, function(file) {
-      console.log(typeof file);
-    });
 
     // Actually copy (and process). files.
     init.copyAndProcess(files, props);
