@@ -2,8 +2,10 @@
 var grunt = require("grunt");
 var path = require("path");
 
-// Load the BBB tasks
-grunt.loadTasks(path.resolve(__dirname + "/../tasks"));
-
 // Initialize the CLI
-grunt.cli();
+grunt.npmTasks("bbb").cli({
+
+  // Load the BBB tasks
+  tasks: [path.resolve(__dirname + "/../tasks")]
+
+});
