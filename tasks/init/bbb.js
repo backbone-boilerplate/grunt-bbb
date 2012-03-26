@@ -32,7 +32,9 @@ exports.template = function(grunt, init, done) {
     // Files to copy (and process).
     var files = init.filesToCopy(props);
 
-    console.log(files);
+    _.each(files, function(file) {
+      console.log(typeof file);
+    });
 
     // Actually copy (and process). files.
     init.copyAndProcess(files, props);

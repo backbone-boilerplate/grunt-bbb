@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 var grunt = require("grunt");
+var path = require("path");
 
 // Load the BBB tasks
-grunt.loadTasks(__dirname + "/../tasks");
+grunt.loadTasks(path.resolve(__dirname + "/../tasks"));
 
 // Initialize the CLI
 grunt.cli();
