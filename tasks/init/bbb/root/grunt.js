@@ -3,9 +3,6 @@
 // https://github.com/cowboy/grunt/blob/master/docs/configuring.md
 //
 module.exports = function(grunt) {
-  
-  // This will load the Backbone Boilerplate tasks.
-  grunt.loadNpmTasks("bbb");
 
   grunt.initConfig({
 

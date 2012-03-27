@@ -15,3 +15,9 @@ Special Thanks to: [cowboy](http://github.com/cowboy),
 [iros](http://github.com/iros), [nimbupani](http://github.com/nimbupani),
 [wookiehangover](http://github.com/wookiehangover), and
 [jugglinmike](http://github.com/jugglinmike)
+
+## Documentation ##
+
+View the Backbone Boilerplate documentation here:
+
+[GitHub Wiki](https://github.com/tbranyen/backbone-boilerplate/wiki)
