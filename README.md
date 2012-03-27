@@ -13,15 +13,15 @@ These commands will automatically build out files for you.
 
 Creates a bare boilerplate.
 
-#### init:tutorial ####
+#### `init:tutorial` ####
 
 Creates a boilerplate which contains the tutorial.
 
-#### init:module ####
+#### `init:module` ####
 
 Creates a new module in the `app/modules` directory.
 
-#### list ####
+#### `list` ####
 
 Shows a graph of your application's modules and dependencies.
 
@@ -29,29 +29,29 @@ Shows a graph of your application's modules and dependencies.
 
 These commmands help you build your application.
 
-#### debug ####
+#### `debug` ####
 
-#### release ####
+#### `release` ####
 
-#### clean ####
+#### `clean` ####
 
-#### handlebars ####
+#### `handlebars` ####
 
-#### jst ####
+#### `jst` ####
 
-#### less ####
+#### `less` ####
 
-#### mincss ####
+#### `mincss` ####
 
-#### requirejs ####
+#### `requirejs` ####
 
-#### server ####
+#### `server` ####
 
-#### templatize ####
+#### `templatize` ####
 
 ### Other commands ###
 
-#### update ####
+#### `update` ####
 
 Updates to the latest Boilerplate files. You will not get fixes with this
 command, since it would be impossible to merge them in.
