@@ -2,7 +2,7 @@
   "name": "bbb",
   "description": "Backbone Boilerplate",
   "version": "0.1.0",
-  "homepage": "https://github.com/timbranyen/bbb",
+  "homepage": "https://github.com/tbranyen/bbb",
   "author": {
     "name": "Tim Branyen (@tbranyen)",
     "email": "tim@tabdeveloper.com",
@@ -10,10 +10,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/timbranyen/bbb.git"
+    "url": "git://github.com/tbranyen/bbb.git"
   },
   "bugs": {
-    "url": "https://github.com/timbranyen/bbb/issues"
+    "url": "https://github.com/tbranyen/bbb/issues"
   },
   "dependencies": {
     "grunt": "~0.3.2",
