@@ -9,7 +9,7 @@ Install this grunt plugin with: `npm install -g bbb`
 
 These commands will automatically build out files for you.
 
-#### init ####
+#### `init` ####
 
 Creates a bare boilerplate.
 
