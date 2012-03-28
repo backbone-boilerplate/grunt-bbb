@@ -21,10 +21,6 @@ Creates a boilerplate which contains the tutorial.
 
 Creates a new module in the `app/modules` directory.
 
-#### `list` ####
-
-Shows a graph of your application's modules and dependencies.
-
 ### Build ###
 
 These commmands help you build your application.
@@ -55,6 +51,10 @@ These commmands help you build your application.
 
 Updates to the latest Boilerplate files. You will not get fixes with this
 command, since it would be impossible to merge them in.
+
+#### `list` ####
+
+Shows a graph of your application's modules and dependencies.
 
 ## License
 Copyright (c) 2012 Tim Branyen (@tbranyen)  
