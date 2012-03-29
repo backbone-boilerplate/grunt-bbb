@@ -1,5 +1,6 @@
-exports.description = "Backbone Boilerplate scaffolding and build tool";
-exports.notes = "...";
+exports.description = "Backbone Boilerplate framework";
+exports.notes = "This tool will help you install, configure, build, and "
+  + "maintain your Backbone Boilerplate project.";
 
 exports.template = function(grunt, init, done) {
 
