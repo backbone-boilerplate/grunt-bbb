@@ -17,5 +17,5 @@ var taskList = fs.readdirSync(__dirname + buildTasks).filter(function(task) {
 // Initialize the CLI
 grunt.npmTasks("bbb").cli({
   // Load the BBB tasks
-//  tasks: taskList
+  tasks: taskList
 }, function() {});
