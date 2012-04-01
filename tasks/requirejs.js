@@ -4,7 +4,7 @@
  *
  * Task: RequireJS
  * Description: Tasks for working with RequireJS.
- * Dependencies: requirejs@1.0.7
+ * Dependencies: requirejs
  *
  */
 

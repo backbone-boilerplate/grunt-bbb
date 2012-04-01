@@ -4,7 +4,7 @@
  *
  * Task: templatize
  * Description: Compile javascript templates with any templating enginej
- * Dependencies: variable
+ * Dependencies: None
  *
  */
 

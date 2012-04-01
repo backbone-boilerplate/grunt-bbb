@@ -19,7 +19,6 @@
     "grunt": "0.3.6",
 
     "rimraf": "1.0.9",
-    "underscore": "1.2.4",
     "less": "1.2.1",
     "clean-css": "0.3.2",
     "requirejs": "1.0.7",

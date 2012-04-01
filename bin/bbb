@@ -1,3 +1,9 @@
 #!/usr/bin/env node
 
-require("grunt").npmTasks("bbb").cli();
+var grunt = require("grunt");
+
+// Load the plugin tasks
+grunt.npmTasks("bbb");
+
+// Need a callback function to the CLI for long running async tasks
+grunt.cli({}, function() {});

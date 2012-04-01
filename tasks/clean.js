@@ -4,7 +4,7 @@
  *
  * Task: Clean
  * Description: Remove the contents of a given folder
- * Dependencies: rimraf@1.0.9
+ * Dependencies: rimraf
  *
  */
 

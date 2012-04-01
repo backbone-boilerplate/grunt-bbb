@@ -4,7 +4,7 @@
  *
  * Task: less
  * Description: Compile LESS files to CSS and minify.
- * Dependencies: less@1.2.1 / clean-css@0.3.2
+ * Dependencies: less / clean-css
  *
  */
 

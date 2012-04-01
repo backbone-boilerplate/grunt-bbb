@@ -4,7 +4,7 @@
  *
  * Task: JST
  * Description: Compile underscore templates to JST file.
- * Dependencies: underscore@1.2.4
+ * Dependencies: underscore
  *
  */
 
@@ -13,6 +13,8 @@ module.exports = function(grunt) {
   var file = grunt.file;
   var log = grunt.log;
   var config = grunt.config;
+
+  var _ = grunt.utils._;
 
   grunt.registerMultiTask("jst",
     "Compile underscore templates to JST file", function() {
@@ -36,9 +38,6 @@ module.exports = function(grunt) {
   });
 
   grunt.registerHelper("jst", function(files, namespace, templateSettings) {
-    // Ensure we get the underscore from the node_modules folder
-    var _ = require("underscore");
-
     // Pulled from underscore 1.2.4
     function underscoreTemplating(str) {
         // Merge in the templateSettings that may be passed
