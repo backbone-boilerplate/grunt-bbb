@@ -5,5 +5,5 @@ var grunt = require("grunt");
 // Load the plugin tasks
 grunt.npmTasks("bbb");
 
-// Need a callback function to the CLI for long running async tasks
+// Need a callback function to the CLI for long running tasks
 grunt.cli({}, function() {});
