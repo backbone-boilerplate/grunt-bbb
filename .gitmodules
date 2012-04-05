@@ -1,0 +1,3 @@
+[submodule "tasks/init/bbb"]
+	path = tasks/init/bbb
+	url = git://github.com/backbone-boilerplate/core.git
