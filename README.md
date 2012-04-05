@@ -1,7 +1,13 @@
 *WIP* Backbone Boilerplate framework tool.
 
 ## Getting Started ##
-Install this grunt plugin with: `npm install -g bbb`
+
+*Ensure you have Node.js ~0.6 installed*
+
+Once you have Node.js...
+
+Install this [Grunt](https://github.com/cowboy/grunt) plugin with:
+`npm install -g bbb`
 
 ## Commands ##
 
@@ -101,16 +107,6 @@ instead. This setup is how your application should be deployed.
 #### `templatize` ####
 
 Documentation forthcoming.
-
-### Other commands ###
-
-These commands are considered miscellaneous since they don't fit in either
-category above.
-
-#### Not implemented: `update` ####
-
-Updates to the latest Boilerplate files. You will not get fixes with this
-command, since it would be impossible to merge them in.
 
 ## License
 Copyright (c) 2012 Tim Branyen (@tbranyen)  
