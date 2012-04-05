@@ -12,12 +12,11 @@ module.exports = function(grunt) {
 
   var rimraf = require("rimraf");
   var log = grunt.log;
-  var file = grunt.file;
 
-  grunt.registerMultiTask("clean",
+  grunt.registerTask("clean",
     "Deletes out all contents in a directory", function() {
 
-    var files = file.expand(this.data);
+    var files = grunt.config("clean");
 
     files.forEach(function(file) {
       grunt.helper("clean", file);
@@ -27,7 +26,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerHelper("clean", function(path) {
-    log.writeln('Removing: ' + path);
+    log.writeln("Removing: " + path);
     rimraf.sync(path);
   });
 
