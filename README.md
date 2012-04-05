@@ -2,10 +2,6 @@
 
 ## Getting Started ##
 
-*Ensure you have Node.js ~0.6 installed*
-
-Once you have Node.js...
-
 Install this [Grunt](https://github.com/cowboy/grunt) plugin with:
 `npm install -g bbb`
 
