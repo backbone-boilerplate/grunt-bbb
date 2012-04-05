@@ -36,7 +36,7 @@ exports.template = function(grunt, init, done) {
 
     // Actually copy (and process). files.
     init.copyAndProcess(files, props, {
-      noProcess: [ "assets/**", "favicon.ico" ]
+      noProcess: [ "assets/**", "test/**", "favicon.ico" ]
     });
 
     // All done!

@@ -1,3 +1,0 @@
-{
-  "app/namespace.js": "app/{%= namespace %}.js"
-}
