@@ -29,21 +29,21 @@ module.exports = function(grunt) {
       }
     },
 
-    // The jst task compiles all application templates into JavaScript functions
-    // with the underscore.js template function from 1.2.4.  You can change the
-    // namespace and the template options, by reading this:
+    // The jst task compiles all application templates into JavaScript
+    // functions with the underscore.js template function from 1.2.4.  You can
+    // change the namespace and the template options, by reading this:
     // https://github.com/tbranyen/build-tasks/tree/master/jst
     //
-    // The concat task depends on this file to exist, so if you decide to remove
-    // this, ensure concat is updated accordingly.
+    // The concat task depends on this file to exist, so if you decide to
+    // remove this, ensure concat is updated accordingly.
     jst: {
       "dist/debug/templates.js": [
         "app/templates/**/*.html"
       ]
     },
 
-    // The concatenate task is used here to merge the almond require/define shim
-    // and the templates into the application code.  It's named
+    // The concatenate task is used here to merge the almond require/define
+    // shim and the templates into the application code.  It's named
     // dist/debug/require.js, because we want to only load one script file in
     // index.html.
     concat: {
@@ -103,8 +103,8 @@ module.exports = function(grunt) {
       }
     },
 
-    // This task uses James Burke's excellent r.js AMD build tool.  In the future
-    // other builders may be contributed as drop-in alternatives.
+    // This task uses James Burke's excellent r.js AMD build tool.  In the
+    // future other builders may be contributed as drop-in alternatives.
     requirejs: {
       // Include the main configuration file
       mainConfigFile: "app/config.js",
@@ -121,8 +121,8 @@ module.exports = function(grunt) {
 
   });
 
-  // The default task will remove all contents inside the dist/ folder, lint all
-  // your code, precompile all the underscore templates into
+  // The default task will remove all contents inside the dist/ folder, lint
+  // all your code, precompile all the underscore templates into
   // dist/debug/templates.js, compile all the application code into
   // dist/debug/require.js, and then concatenate the require/define shim
   // almond.js and dist/debug/templates.js into the require.js file.

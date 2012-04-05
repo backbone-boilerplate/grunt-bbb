@@ -11,9 +11,6 @@ define([
 
 function({%= namespace %}, Backbone) {
 
-  // Shorthand the application namespace
-  var app = {%= namespace %}.app;
-
   // Create a new module
   var Example = {%= namespace %}.module();
 

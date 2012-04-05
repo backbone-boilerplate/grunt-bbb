@@ -40,7 +40,7 @@ Ensures all your code conforms to JSHint.
 
 #### `list` ####
 
-Shows a graph of your application's modules and dependencies.
+Shows a tree of your application's modules and dependencies.
 
 ### Build ###
 
