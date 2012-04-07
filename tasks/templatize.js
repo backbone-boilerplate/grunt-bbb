@@ -16,11 +16,11 @@ module.exports = function(grunt) {
   grunt.registerMultiTask("templatize",
     "Compile javascript templates with any templating enginej", function() {
 
+    var data = this.data;
     var compiler = data.method;
     var params = data.params||[];
     var namespace = data.namespace || "JST";
     var wrapper = data.wrapper||function(text) { return text; };
-    var data = this.data;
 
     // iterate over files to compile
     Object.keys(data.files).forEach(function(dest) {
