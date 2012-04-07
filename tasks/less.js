@@ -14,7 +14,7 @@ module.exports = function(grunt) {
   var log = grunt.log;
 
   grunt.registerMultiTask("less",
-    "Compile LESS files to CSS and minify.", function() {
+    "Compile LESS files to CSS.", function() {
 
     // load libraries
     var less = require("less");
