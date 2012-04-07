@@ -4,7 +4,7 @@
  *
  * Task: less
  * Description: Compile LESS files to CSS and minify.
- * Dependencies: less / clean-css
+ * Dependencies: less
  *
  */
 
@@ -18,7 +18,6 @@ module.exports = function(grunt) {
 
     // load libraries
     var less = require("less");
-    var cleanCSS = require("clean-css");
     var data = this.data;
 
     // initialize LESS parser
@@ -43,11 +42,6 @@ module.exports = function(grunt) {
 
         // compile less to css
         var css = tree.toCSS();
-
-        // if config specified minify, do so with clean-css
-        if(data.options.compress) {
-          css = cleanCSS.process(css);
-        }
 
         // write contents
         grunt.file.write(dest,css);
