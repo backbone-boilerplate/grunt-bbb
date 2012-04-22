@@ -21,7 +21,7 @@ module.exports = function(grunt) {
     var data = this.data;
 
     // initialize LESS parser
-    var parser = new(less.Parser);
+    var parser = new less.Parser();
 
     // make sure task runs until parser is completely finished (imports are processed asynchronously)
     var done = this.async();
