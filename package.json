@@ -16,7 +16,7 @@
     "url": "https://github.com/tbranyen/bbb/issues"
   },
   "dependencies": {
-    "grunt": "0.3.6",
+    "grunt": "0.3.9",
 
     "rimraf": "1.0.9",
     "less": "1.2.1",

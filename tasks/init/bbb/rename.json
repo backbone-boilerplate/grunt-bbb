@@ -1,4 +1,3 @@
 {
-  "app/namespace.js": "app/{%= namespace %}.js",
   ".git": false
 }

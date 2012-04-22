@@ -16,31 +16,15 @@ exports.template = function(grunt, init, done) {
   var template = grunt.template;
   var _ = grunt.utils._;
 
-  var prompts = grunt.helper("prompt_for_obj");
+  // Files to copy (and process).
+  var files = init.filesToCopy({});
 
-  _.extend(prompts, {
-    bbb_namespace: {
-      message: 'Project namespace',
-      validator: /^[\w\-\.]+$/
-    }
+  // Actually copy (and process). files.
+  init.copyAndProcess(files, {}, {
+    noProcess: [ "assets/**", "test/**", "favicon.ico" ]
   });
 
-  grunt.helper("prompt", {}, [
-    // Prompt for these values.
-    grunt.helper("prompt_for", "bbb_namespace")
-  ], function(err, props) {
-    props.namespace = props["bbb_namespace"];
-
-    // Files to copy (and process).
-    var files = init.filesToCopy(props);
-
-    // Actually copy (and process). files.
-    init.copyAndProcess(files, props, {
-      noProcess: [ "assets/**", "test/**", "favicon.ico" ]
-    });
-
-    // All done!
-    done();
-  });
+  // All done!
+  done();
 
 };
