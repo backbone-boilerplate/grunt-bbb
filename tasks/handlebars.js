@@ -42,7 +42,7 @@ module.exports = function(grunt) {
       var templateFunction =
         require("handlebars").precompile(file.read(filepath));
 
-      return namespace + "['" + filepath + "'] = " + templateFunction;
+      return namespace + "['" + filepath + "'] = " + templateFunction + ";";
     }).join("\n\n") : "";
 
     return contents;
