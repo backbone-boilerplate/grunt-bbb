@@ -1,3 +1,3 @@
-[submodule "tasks/init/bbb/root"]
-	path = tasks/init/bbb/root
-	url = git://github.com/tbranyen/backbone-boilerplate.git
+[submodule "tasks/init"]
+	path = tasks/init
+	url = git://github.com/backbone-boilerplate/init.git

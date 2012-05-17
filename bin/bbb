@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-require("grunt").npmTasks("bbb").cli();
+require("grunt").npmTasks(["grunt-contrib", "bbb"]).cli();
