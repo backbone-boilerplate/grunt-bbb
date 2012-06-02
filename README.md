@@ -22,11 +22,15 @@ These commands will build out files for you.
 
 Creates a bare boilerplate.
 
-#### Not implemented: `init:tutorial` ####
+#### `init:tutorial` ####
 
 Creates a boilerplate which contains the tutorial.
 
-#### Not implemented: `init:module` ####
+#### `init:todomvc` ####
+
+Creates a boilerplate which contains the TodoMVC application with LayoutManager.
+
+#### `init:module` ####
 
 Creates a new module in the `app/modules` directory.
 
