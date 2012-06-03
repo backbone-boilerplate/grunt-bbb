@@ -1,9 +1,28 @@
-*WIP* Backbone Boilerplate framework tool.
+Backbone Boilerplate framework tool.
 
 ## Getting Started ##
 
 Install this [Grunt](https://github.com/cowboy/grunt) plugin with:
 `npm install -g bbb`
+
+## Development ##
+
+If you wish to contribute or just want to install from source, simply run the
+following commands:
+
+``` bash
+# Clone the repository.
+git clone git://github.com/backbone-boilerplate/grunt-bbb.git
+
+# Change directory into it.
+cd grunt-bbb
+
+# Update all the submodules recursively.
+git submodule update --init --recursive
+
+# Allow bbb to be globally accessible.
+sudo npm link
+```
 
 ## Commands ##
 
@@ -20,17 +39,24 @@ These commands will build out files for you.
 
 #### `init` ####
 
-Creates a bare boilerplate.
+Creates a bare boilerplate project.
 
 #### `init:tutorial` ####
+
+*Run bbb init before this command*
 
 Creates a boilerplate which contains the tutorial.
 
 #### `init:todomvc` ####
 
-Creates a boilerplate which contains the TodoMVC application with LayoutManager.
+*Run bbb init before this command*
+
+Creates a boilerplate which contains the TodoMVC application that utilizes
+LayoutManager.
 
 #### `init:module` ####
+
+*Run bbb init before this command*
 
 Creates a new module in the `app/modules` directory.
 
@@ -103,10 +129,6 @@ build, since files are not minified.
 
 This command will serve the same was debug except mapping to `dist/release`
 instead. This setup is how your application should be deployed.
-
-#### `templatize` ####
-
-Documentation forthcoming.
 
 ## License
 Copyright (c) 2012 Tim Branyen (@tbranyen)  
