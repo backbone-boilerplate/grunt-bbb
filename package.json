@@ -1,7 +1,7 @@
 {
   "name": "bbb",
   "description": "Backbone Boilerplate",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/tbranyen/bbb",
   "author": {
     "name": "Tim Branyen (@tbranyen)",
@@ -18,7 +18,7 @@
   "dependencies": {
     "grunt": "0.3.9",
     "grunt-contrib": "0.0.4",
-    "requirejs": "2.0.0",
+    "requirejs": "2.0.1",
     "express": "2.5.9"
   },
   "devDependencies": {
