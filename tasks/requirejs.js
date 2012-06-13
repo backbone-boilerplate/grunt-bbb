@@ -76,7 +76,8 @@ module.exports = function(grunt) {
 
         files.forEach(function(name) {
           var contents = fs.readFileSync(name, "utf8");
-          var shortname = name.slice(name.indexOf("app/"));
+          var prefix = process.platform === "win32" ? "app\\" : "app/";
+          var shortname = name.slice(name.indexOf(prefix));
 
           deps[shortname] = parse.findDependencies(name,
             contents);
@@ -114,9 +115,11 @@ module.exports = function(grunt) {
           _.each(val, function(val, i) {
             if (_.isString(val)) {
               if (i == len-1) {
-                tree.push("\u2502 " + spaces(depth+1, "\u2500", "\u2514") + " " + val);
+                tree.push("\u2502 " + spaces(depth+1, "\u2500", "\u2514") + " "
+                  + val);
               } else {
-                tree.push("\u2502 " + spaces(depth+1, "\u2500", "\u251c") + " " + val);
+                tree.push("\u2502 " + spaces(depth+1, "\u2500", "\u251c") + " "
+                  + val);
               }
             } else if (_.isObject(val)) {
               traverse(obj, depth+1);
