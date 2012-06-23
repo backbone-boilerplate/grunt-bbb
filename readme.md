@@ -33,28 +33,35 @@ All commands are prefixed with `bbb` in your terminal.  For example the command
 $ bbb init
 ```
 
+Tasks are defined inside the grunt-bbb project, but also borrowed from other
+grunt projects: [grunt-contrib](https://github.com/gruntjs/grunt-contrib) &
+[grunt-jasmine-task](https://github.com/creynders/grunt-jasmine-task)
+
+If you have problems with borrowed tasks, please file issues on the respective
+projects.
+
 ### Scaffolding ###
 
 These commands will build out files for you.
 
-#### `init` ####
+#### `init` (bbb) ####
 
 Creates a bare boilerplate project.
 
-#### `init:tutorial` ####
+#### `init:tutorial` (bbb) ####
 
 *Run bbb init before this command*
 
 Creates a boilerplate which contains the tutorial.
 
-#### `init:todomvc` ####
+#### `init:todomvc` (bbb) ####
 
 *Run bbb init before this command*
 
 Creates a boilerplate which contains the TodoMVC application that utilizes
 LayoutManager.
 
-#### `init:module` ####
+#### `init:module` (bbb) ####
 
 *Run bbb init before this command*
 
@@ -64,11 +71,11 @@ Creates a new module in the `app/modules` directory.
 
 These commands help you maintain your project.
 
-#### `lint` ####
+#### `lint` (grunt) ####
 
 Ensures all your code conforms to JSHint.
 
-#### `list` ####
+#### `list` (bbb) ####
 
 Shows a tree of your application's modules and dependencies.
 
@@ -76,7 +83,7 @@ Shows a tree of your application's modules and dependencies.
 
 These commmands help you build your application.
 
-#### `debug` ####
+#### `debug` (bbb) ####
 
 Lints all your JavaScript, compiles all your templates to JST (JavaScript
 Templates), builds your application using RequireJS build tool (figures out
@@ -84,48 +91,48 @@ dependencies and concatenates all files), and then finally concatenates the
 templates and application together.  This task also swaps out RequireJS for
 Almond (signficantly smaller filesize AMD manager).
 
-#### `release` ####
+#### `release` (bbb) ####
 
 Everything that debug command does, except the final tasks here are minified
 CSS and minified JavaScript.
 
-#### `clean` ####
+#### `clean` (grunt-contrib) ####
 
 Removes all files inside `dist/` directory.
 
-#### `handlebars` ####
+#### `handlebars` (grunt-contrib) ####
 
 Compiles handlebars templates - *this requires setup*.
 
-#### `jst` ####
+#### `jst` (grunt-contrib) ####
 
 Compiles all templates as underscore template functions and outputs them to
 `dist/debug/templates.js`.
 
-#### `less` ####
+#### `less` (grunt-contrib) ####
 
 Compiles LESS stylesheets.
 
-#### `mincss` ####
+#### `mincss` (grunt-contrib) ####
 
 Minifies your CSS into `dist/release/index.css`.
 
-#### `requirejs` ####
+#### `requirejs` (bbb) ####
 
 Builds out your application using the defaults specified into the root
 `grunt.js` file.
 
-#### `server` ####
+#### `server` (bbb) ####
 
 Will by default run with normal files perfect for development and debugging.
 
-##### `server:debug` #####
+##### `server:debug` (bbb) #####
 
 This command serves the same files excepts that your application is mapped to
 the `dist/debug` directory. This is mostly useful for detecting issues with the
 build, since files are not minified.
 
-##### `server:release` #####
+##### `server:release` (bbb) #####
 
 This command will serve the same was debug except mapping to `dist/release`
 instead. This setup is how your application should be deployed.

@@ -1,3 +1,15 @@
 #!/usr/bin/env node
+require("grunt")
 
-require("grunt").npmTasks(["grunt-contrib", "bbb"]).cli();
+  // Preload all custom tasks.
+  .npmTasks([
+    // Load grunt-contrib used for a majority of the tasks.
+    "grunt-contrib",
+    // Load grunt-jasmine-task used for testing Jasmine.
+    "grunt-jasmine-task",
+    // Load the remaining tasks (init/server/requirejs) from bbb.
+    "bbb"
+  ])
+
+  // Invoke the CLI.
+  .cli();
