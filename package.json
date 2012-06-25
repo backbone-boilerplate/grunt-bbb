@@ -16,7 +16,7 @@
     "url": "https://github.com/backbone-boilerplate/grunt-bbb/issues"
   },
   "dependencies": {
-    "grunt": "0.3.9",
+    "grunt": "0.3.10",
     "grunt-contrib": "0.0.8",
     "grunt-jasmine-task": "0.2.0",
 
@@ -24,11 +24,11 @@
     "express": "2.5.9"
   },
   "devDependencies": {
-    "grunt": "~0.3.0"
+    "grunt": "~0.3.10"
   },
   "keywords": [],
   "engines": {
-    "node": "~0.6"
+    "node": ">= 0.6.0"
   },
   "main": "grunt.js",
   "bin": "bin/bbb",
