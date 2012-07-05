@@ -66,7 +66,17 @@ module.exports = function(grunt) {
 
     // Map static folders
     Object.keys(options.folders).sort().reverse().forEach(function(key) {
-      site.use("/" + key, express.static(options.folders[key]));
+      site.use("/" + key, function(req, res, next){
+        express.static.send(req, res, next, {
+          root: options.folders[key],
+          path: req.url,
+          getOnly: true,
+
+          callback: function(err) {
+            res.send(404);
+          }
+        });
+      });
     });
 
     // Map static files
