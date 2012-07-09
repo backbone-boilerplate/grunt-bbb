@@ -1,7 +1,7 @@
 {
   "name": "bbb",
   "description": "Backbone Boilerplate Build Tool",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "homepage": "https://github.com/tbranyen/bbb",
   "author": {
     "name": "Tim Branyen (@tbranyen)",
@@ -16,14 +16,12 @@
     "url": "https://github.com/backbone-boilerplate/grunt-bbb/issues"
   },
   "dependencies": {
-    "grunt": "0.3.10",
+    "grunt": "0.3.11",
     "grunt-contrib": "0.0.8",
     "grunt-jasmine-task": "0.2.0",
 
     "requirejs": "2.0.2",
-    "express": "2.5.9",
-    "cdir": "0.1.2",
-    "phantom": "0.3.5"
+    "express": "2.5.9"
   },
   "devDependencies": {
     "grunt": "~0.3.10"
