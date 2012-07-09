@@ -13,10 +13,11 @@ grunt.npmTasks([
 
 // Draw the help screen.
 function displayHelp() {
+  var pkg = require(__dirname + "/../package.json");
   grunt.log.writeln();
-  grunt.log.writeln("Backbone Boilerplate");
-  grunt.log.writeln(" bbb ".green.inverse + " Version - " +
-    require(__dirname + "/../package.json").version);
+  grunt.log.writeln(pkg.description);
+  grunt.log.writeln((" " + pkg.name + " ").green.inverse
+    + " Version - " + pkg.version);
 
   // Borrowed heavily from the Grunt help source.
   var col1len = 0;
