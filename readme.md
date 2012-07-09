@@ -5,6 +5,11 @@ Backbone Boilerplate framework tool.
 Install this [Grunt](https://github.com/cowboy/grunt) plugin with:
 `npm install -g bbb`
 
+To test installation, run the `bbb` command.  You should see something like
+this:
+
+![screenshot](https://github.com/backbone-boilerplate/grunt-bbb/raw/assets/screenshot.png)
+
 ## Development ##
 
 If you wish to contribute or just want to install from source, simply run the
