@@ -42,14 +42,17 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask("list", "Show module dependencies", function(prop) {
-    grunt.helper("list");
+    var options = grunt.config("requirejs") || {};
+    var baseUrl = options.baseUrl || "app";
+    // ensure trailing slash
+    grunt.helper("list", path.normalize(baseUrl + "/"));
   });
 
   grunt.registerHelper("r.js", function(options, done) {
     requirejs.optimize(options, done);
   });
 
-  grunt.registerHelper("list", function() {
+  grunt.registerHelper("list", function(appDir) {
     var jsRegExp = /\.js$/;
 
     requirejs.tools.useLib(function(require) {
@@ -71,13 +74,12 @@ module.exports = function(grunt) {
           });
         }
 
-        // Start with the app directory
-        recurse("app/");
+        // Start with the app directory e.g. app/
+        recurse(appDir);
 
         files.forEach(function(name) {
           var contents = fs.readFileSync(name, "utf8");
-          var prefix = process.platform === "win32" ? "app\\" : "app/";
-          var shortname = name.slice(name.indexOf(prefix));
+          var shortname = name.slice(name.indexOf(appDir));
 
           deps[shortname] = parse.findDependencies(name,
             contents);
