@@ -72,8 +72,8 @@ module.exports = function(grunt) {
     var root = _.isString(options.root) ? options.root : "/";
 
     // Process stylus stylesheets.
-    site.get(root + "assets/css/stylus!*", function(req, res) {
-      var url = req.url.split("!")[1];
+    site.get(/.styl$/, function(req, res) {
+      var url = req.url.split("assets/css/")[1];
       var file = path.join("assets/css", url);
 
       fs.readFile(file, function(err, contents) {
