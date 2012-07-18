@@ -64,15 +64,15 @@ module.exports = function(grunt) {
     var path = require("path");
     var stylus = require("stylus");
     var express = require("express");
-    var site = express.createServer();
 
     // If the server is already available use it.
-    if (options.server) {
-      site = options.server;
-    }
+    var site = options.server ? options.server() : express.createServer();
+
+    // Allow users to override the root.
+    var root = _.isString(options.root) ? options.root : "/";
 
     // Process stylus stylesheets.
-    site.get("/assets/css/stylus!*", function(req, res) {
+    site.get(root + "assets/css/stylus!*", function(req, res) {
       var url = req.url.split("!")[1];
       var file = path.join("assets/css", url);
 
@@ -89,41 +89,18 @@ module.exports = function(grunt) {
 
     // Map static folders.
     Object.keys(options.folders).sort().reverse().forEach(function(key) {
-      site.get("/" + key + "*", function(req, res, next) {
+      site.get(root + key + "*", function(req, res, next) {
         // Find filename.
-        var filename = req.url.slice(key.length + 1);
+        var filename = req.url.slice((root + key).length);
 
         res.sendfile(path.join(options.folders[key] + filename));
-
-        //fs.createReadStream(filename).pipe(res);
-        // Send the static file.
-        //express.static.send(req, res, next, {
-        //  root: options.folders[key],
-        //  path: req.url,
-        //  getOnly: true,
-
-        //  callback: function(err) {
-        //    res.send(404);
-        //  }
-        //});
       });
-      //site.use("/" + key, function(req, res, next){
-      //  express.static.send(req, res, next, {
-      //    root: options.folders[key],
-      //    path: req.url,
-      //    getOnly: true,
-
-      //    callback: function(err) {
-      //      res.send(404);
-      //    }
-      //  });
-      //});
     });
 
     // Map static files.
     if (_.isObject(options.files)) {
       Object.keys(options.files).sort().reverse().forEach(function(key) {
-        site.get("/" + key, function(req, res) {
+        site.get(root + key, function(req, res) {
           return res.sendfile(options.files[key]);
         });
       });
