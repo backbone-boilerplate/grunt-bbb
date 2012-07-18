@@ -59,27 +59,68 @@ module.exports = function(grunt) {
   });
 
   grunt.registerHelper("server", function(options) {
-    // Require libraries
+    // Require libraries.
     var fs = require("fs");
+    var path = require("path");
+    var stylus = require("stylus");
     var express = require("express");
     var site = express.createServer();
 
-    // Map static folders
-    Object.keys(options.folders).sort().reverse().forEach(function(key) {
-      site.use("/" + key, function(req, res, next){
-        express.static.send(req, res, next, {
-          root: options.folders[key],
-          path: req.url,
-          getOnly: true,
+    // If the server is already available use it.
+    if (options.server) {
+      site = options.server;
+    }
 
-          callback: function(err) {
-            res.send(404);
-          }
+    // Process stylus stylesheets.
+    site.get("/assets/css/stylus!*", function(req, res) {
+      var url = req.url.split("!")[1];
+      var file = path.join("assets/css", url);
+
+      fs.readFile(file, function(err, contents) {
+        var processer = stylus(contents.toString());
+
+        processer.set("paths", ["assets/css/"]);
+        processer.render(function(err, css) {
+          res.header("Content-type", "text/css");
+          res.send(css);
         });
       });
     });
 
-    // Map static files
+    // Map static folders.
+    Object.keys(options.folders).sort().reverse().forEach(function(key) {
+      site.get("/" + key + "*", function(req, res, next) {
+        // Find filename.
+        var filename = req.url.slice(key.length + 1);
+
+        res.sendfile(path.join(options.folders[key] + filename));
+
+        //fs.createReadStream(filename).pipe(res);
+        // Send the static file.
+        //express.static.send(req, res, next, {
+        //  root: options.folders[key],
+        //  path: req.url,
+        //  getOnly: true,
+
+        //  callback: function(err) {
+        //    res.send(404);
+        //  }
+        //});
+      });
+      //site.use("/" + key, function(req, res, next){
+      //  express.static.send(req, res, next, {
+      //    root: options.folders[key],
+      //    path: req.url,
+      //    getOnly: true,
+
+      //    callback: function(err) {
+      //      res.send(404);
+      //    }
+      //  });
+      //});
+    });
+
+    // Map static files.
     if (_.isObject(options.files)) {
       Object.keys(options.files).sort().reverse().forEach(function(key) {
         site.get("/" + key, function(req, res) {
@@ -88,9 +129,9 @@ module.exports = function(grunt) {
       });
     }
 
-    // Serve favicon.ico
+    // Serve favicon.ico.
     site.use(express.favicon(options.favicon));
-
+    
     // Ensure all routes go home, client side app..
     site.get("*", function(req, res) {
       fs.createReadStream(options.index).pipe(res);

@@ -5,13 +5,16 @@ module.exports = function(grunt) {
     test: {
       files: ["test/**/*.js"]
     },
+
     lint: {
       files: ["grunt.js", "tasks/**/*.js", "test/**/*.js"]
     },
+
     watch: {
       files: "<config:lint.files>",
       tasks: "default"
     },
+
     jshint: {
       options: {
         curly: true,
