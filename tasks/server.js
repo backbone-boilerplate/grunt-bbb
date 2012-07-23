@@ -89,7 +89,7 @@ module.exports = function(grunt) {
 
     // Map static folders.
     Object.keys(options.folders).sort().reverse().forEach(function(key) {
-      site.get(root + key + "*", function(req, res, next) {
+      site.get(root + key + "/*", function(req, res, next) {
         // Find filename.
         var filename = req.url.slice((root + key).length);
 
