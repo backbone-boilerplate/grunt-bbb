@@ -2,7 +2,7 @@
   "name": "bbb",
   "description": "Backbone Boilerplate Build Tool",
   "version": "0.1.9",
-  "homepage": "https://github.com/tbranyen/bbb",
+  "homepage": "https://github.com/backbone-boilerplate/grunt-bbb",
   "author": {
     "name": "Tim Branyen (@tbranyen)",
     "email": "tim@tabdeveloper.com",
