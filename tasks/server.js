@@ -83,7 +83,9 @@ module.exports = function(grunt) {
         var processer = stylus(contents.toString());
         processer.set("paths", ["assets/css/"]);
         processer.render(function(err, css) {
-          if (err) { log.writeln("Stylus Error: \n", err); }
+          if (err) { 
+            log.writeln( err.name+" in file '"+file+"'\n", err.message );
+          }
           res.header("Content-type", "text/css");
           res.send(css);
         });
