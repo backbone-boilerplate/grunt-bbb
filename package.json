@@ -1,7 +1,7 @@
 {
   "name": "bbb",
   "description": "Backbone Boilerplate Build Tool",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "homepage": "https://github.com/backbone-boilerplate/grunt-bbb",
   "author": {
     "name": "Tim Branyen (@tbranyen)",
@@ -21,7 +21,7 @@
     "grunt-jasmine-task": "0.2.0",
 
     "requirejs": "2.0.2",
-    "express": "2.5.11",
+    "express": "2.5.9",
 
     "stylus": "0.28.2"
   },

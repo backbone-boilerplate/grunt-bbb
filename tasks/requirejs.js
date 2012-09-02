@@ -10,15 +10,12 @@
 
 module.exports = function(grunt) {
 
-  // TODO: ditch this when grunt v0.4 is released
-  grunt.util = grunt.util || grunt.utils;
-
   // Node.js modules
   var fs = require("fs");
   var path = require("path");
   // Include requirejs
   var requirejs = require("requirejs");
-  var _ = grunt.util._;
+  var _ = grunt.utils._;
   // Shorthand Grunt functions
   var log = grunt.log;
 
