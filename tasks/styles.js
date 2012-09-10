@@ -19,22 +19,15 @@ module.exports = function(grunt) {
   var log = grunt.log;
   var file = grunt.file;
 
-  grunt.registerTask("styles", "Compile project styles.", function() {
-    var contents, stylesheet;
-    // Styles configuration settings.
-    var styles = grunt.config("styles");
+  grunt.registerMultiTask("styles", "Compile project styles.", function() {
     // Output file.
     var output = "";
-
-    if (!styles || !styles.index) {
-      return log.error("Missing styles Grunt configuration setting.");
-    }
-
+    // Options.
+    var options = this.data;
     // Read in the contents.
-    contents = file.read(styles.index);
-
+    var contents = file.read(options.src);
     // Parse the stylesheet.
-    stylesheet = cssom.parse(contents);
+    var stylesheet = cssom.parse(contents);
 
     // If no CSS rules are defined, why are we even here?
     if (!Array.isArray(stylesheet.cssRules)) {
@@ -58,10 +51,7 @@ module.exports = function(grunt) {
 
       // Parse Stylus files.
       if (path.extname(filepath).slice(1) === "styl") {
-        return grunt.helper("stylus", contents, {
-          // TODO Make this configurable.
-          paths: ["assets/css"]
-        }, function(css) {
+        return grunt.helper("stylus", contents, options, function(css) {
           output += css;
         });
       }
@@ -70,9 +60,8 @@ module.exports = function(grunt) {
       output += contents;
     });
 
-    // TODO Make this configurable.
     // Write out the debug file.
-    file.write("dist/debug/index.css", output);
+    file.write(this.target, output);
     
     // Success message.
     log.writeln("File \"dist/debug/index.css\" created.");

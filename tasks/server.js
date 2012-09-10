@@ -62,7 +62,6 @@ module.exports = function(grunt) {
     // Require libraries.
     var fs = require("fs");
     var path = require("path");
-    var stylus = require("stylus");
     var express = require("express");
 
     // If the server is already available use it.
@@ -77,13 +76,9 @@ module.exports = function(grunt) {
       var file = path.join("assets/css", url);
 
       fs.readFile(file, function(err, contents) {
-        var processer = stylus(contents.toString());
-        processer.set("paths", ["assets/css/"]);
-        processer.render(function(err, css) {
-          if (err) { 
-            log.writeln(err.name + " in file '" + file + "'\n", err.message);
-          }
-
+        grunt.helper("stylus", contents.toString(), {
+          paths: ["assets/css/"]
+        }, function(css) {
           res.header("Content-type", "text/css");
           res.send(css);
         });
