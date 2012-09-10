@@ -23,7 +23,9 @@
     "requirejs": "2.0.6",
     "express": "2.5.9",
 
-    "stylus": "0.29.0"
+    "stylus": "0.29.0",
+    "nib": "0.8.2",
+    "cssom": "0.2.5"
   },
   "devDependencies": {
     "grunt": "~0.3.14"
