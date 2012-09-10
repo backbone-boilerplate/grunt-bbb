@@ -78,9 +78,11 @@ module.exports = function(grunt) {
 
       fs.readFile(file, function(err, contents) {
         var processer = stylus(contents.toString());
-
         processer.set("paths", ["assets/css/"]);
         processer.render(function(err, css) {
+          if (err) { 
+            log.writeln( err.name+" in file '"+file+"'\n", err.message );
+          }
           res.header("Content-type", "text/css");
           res.send(css);
         });
@@ -110,7 +112,7 @@ module.exports = function(grunt) {
     site.use(express.favicon(options.favicon));
     
     // Ensure all routes go home, client side app..
-    site.get("*", function(req, res) {
+    site.all("*", function(req, res) {
       fs.createReadStream(options.index).pipe(res);
     });
 
