@@ -81,8 +81,9 @@ module.exports = function(grunt) {
         processer.set("paths", ["assets/css/"]);
         processer.render(function(err, css) {
           if (err) { 
-            log.writeln( err.name+" in file '"+file+"'\n", err.message );
+            log.writeln(err.name + " in file '" + file + "'\n", err.message);
           }
+
           res.header("Content-type", "text/css");
           res.send(css);
         });
