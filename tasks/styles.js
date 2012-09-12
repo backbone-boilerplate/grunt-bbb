@@ -46,7 +46,7 @@ module.exports = function(grunt) {
       return paths;
     }, []).map(function(path) {
       return "assets/css/" + path;
-    }).forEach(function(filepath) {
+    }).concat(options.additional).forEach(function(filepath) {
       var contents = file.read(filepath);
 
       // Parse Stylus files.
@@ -64,7 +64,7 @@ module.exports = function(grunt) {
     file.write(this.target, output);
     
     // Success message.
-    log.writeln("File \"dist/debug/index.css\" created.");
+    log.writeln("File " + this.target + " created.");
   });
 
 };

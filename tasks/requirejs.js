@@ -85,7 +85,6 @@ module.exports = function(grunt) {
             contents);
         });
         
-        //console.log({ deps: deps });
         console.log(grunt.helper("tree", deps));
       });
     });

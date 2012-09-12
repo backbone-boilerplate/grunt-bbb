@@ -16,11 +16,12 @@
     "url": "https://github.com/backbone-boilerplate/grunt-bbb/issues"
   },
   "dependencies": {
-    "grunt": "0.3.14",
+    "grunt": "0.3.15",
     "grunt-contrib": "0.1.7",
     "grunt-jasmine-task": "0.2.2",
 
     "requirejs": "2.0.6",
+    "handlebars": "1.0.6-2",
     "express": "2.5.9",
 
     "stylus": "0.29.0",
