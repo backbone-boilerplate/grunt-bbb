@@ -142,6 +142,29 @@ build, since files are not minified.
 This command will serve the same was debug except mapping to `dist/release`
 instead. This setup is how your application should be deployed.
 
+#### `styles` (bbb) ####
+
+Parses a valid CSS file for `@imports` and concatenates them into an output
+file.  Will automatically build stylus files as it encounters them.
+
+Sample configuration:
+
+``` javascript
+styles: {
+  // Output stylesheet file.
+  "dist/debug/index.css": {
+    // Main CSS source file, containing the @imports.
+    src: "assets/css/index.css",
+
+    // Relative path for `@imports`.
+    paths: ["assets/css"],
+
+    // Add additional stylesheets.
+    additional: ["assets/css/production-fixes.css"]
+  }
+},
+```
+
 ## License
 Copyright (c) 2012 Tim Branyen (@tbranyen)  
 Licensed under the MIT license.
