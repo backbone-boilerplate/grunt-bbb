@@ -46,7 +46,7 @@ module.exports = function(grunt) {
       return paths;
     }, []).map(function(path) {
       return "assets/css/" + path;
-    }).concat(options.additional).forEach(function(filepath) {
+    }).concat(options.additional || []).forEach(function(filepath) {
       var contents = file.read(filepath);
 
       // Parse Stylus files.
