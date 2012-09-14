@@ -72,5 +72,9 @@ if (process.argv.length === 2) {
   return displayHelp();
 }
 
-// Otherwise, invoke the CLI.
-grunt.cli();
+if (process.argv[2] === "install") {
+  grunt.tasks("install");
+} else {
+  // Otherwise, invoke the CLI.
+  grunt.cli();
+}
