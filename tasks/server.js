@@ -15,11 +15,12 @@ module.exports = function(grunt) {
   var log = grunt.log;
 
   grunt.registerTask("server", "Run development server.", function(prop) {
-    var options;
+    var options, done;
     var props = ["server"];
+    var args = this.args;
 
-    // Keep alive
-    var done = this.async();
+    // Only keep alive if watch is not set.
+    done = args[args.length-1] === "watch" ? function() {} : this.async();
 
     // If a prop was passed as the argument, use that sub-property of server.
     if (prop) { props.push(prop); }
