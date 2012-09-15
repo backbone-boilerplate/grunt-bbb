@@ -1,14 +1,12 @@
-
 /*
  * Grunt Task File
  * ---------------
  *
  * Task: Jam
  * Description: Task for working with JamJS.
- * Dependencies: jam
+ * Dependencies: jamjs
  *
  */
-
 module.exports = function(grunt) {
   
   // TODO: ditch this when grunt v0.4 is released
@@ -23,17 +21,33 @@ module.exports = function(grunt) {
   // Shorthand Grunt functions
   var log = grunt.log;
 
-  // The install package task.
-  grunt.registerTask("install", "Run JamJS install.", function(prop) {
+  // Set the log level.
+  jamjs.logLevel("info");
+
+  // Execute a JamJS task.
+  grunt.registerTask("jam", "Install, ls, remove, " +
+    "upgrade, search, or rebuild packages.", function(prop) {
+    var taskName = process.argv[2];
     var packages = process.argv.slice(3).join(" ");
     var done = this.async();
+    // Find and reference the JamJS task function.
+    var task = jamjs[taskName];
+    // Used to populate the command.
+    var args = ["./"];
 
-    jamjs.install("./", packages, function() {
-      log.writeln("Successfully installed: ".red + packages);
-      done();
+    // Add the packages argument if it exists.
+    if (process.argv.length > 3) {
+      args.push([packages]);
+    }
+
+    // Add the callback last.
+    args.push(function(err, data) {
+      // If there is data worth logging, log it.
+      console.log(data);
     });
 
-    console.log(jamjs.jamrc);
+    // Execute the task with correct arguments.
+    task.apply(jamjs, args);
   });
 
 };

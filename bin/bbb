@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 var grunt = require("grunt");
+var task = process.argv[2];
+var jamTasks = ["install", "ls", "remove", "upgrade", "search", "rebuild"];
 
 // Preload all custom tasks.
 grunt.npmTasks([
@@ -32,10 +34,20 @@ function displayHelp() {
   var widths = [1, col1len, 2, 76 - col1len];
 
   var gruntTasks = Object.keys(grunt.task._tasks).slice(0, 8);
-  var tasksList = Object.keys(grunt.task._tasks).slice(8);
+  var contribList = Object.keys(grunt.task._tasks).slice(8, 20);
+  var jasmineList = Object.keys(grunt.task._tasks).slice(20, 21);
+  var tasksList = Object.keys(grunt.task._tasks).slice(21);
 
   if (tasksList.length) {
     displayTasks("Backbone Boilerplate", tasksList);
+  }
+
+  if (jasmineList.length) {
+    displayTasks("Grunt Jasmine", jasmineList);
+  }
+
+  if (contribList.length) {
+    displayTasks("Grunt Contrib", contribList);
   }
   
   if (gruntTasks.length) {
@@ -72,9 +84,10 @@ if (process.argv.length === 2) {
   return displayHelp();
 }
 
-if (process.argv[2] === "install") {
-  grunt.tasks("install");
-} else {
-  // Otherwise, invoke the CLI.
-  grunt.cli();
+// If a Jam specific task is found, defer to the Jam task.
+if (jamTasks.indexOf(process.argv[2]) > -1) {
+  return grunt.tasks("jam");
 }
+
+// Otherwise, invoke the CLI.
+grunt.cli();
