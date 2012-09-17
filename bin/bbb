@@ -59,7 +59,7 @@ function displayHelp() {
       col1len = Math.max(col1len, name.length);
       var info = grunt.task._tasks[name].info;
 
-      return [name, info.blue];
+      return [name, info.grey];
     });
 
     grunt.log.header((name + " tasks:").yellow);
