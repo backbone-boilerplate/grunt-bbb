@@ -29,7 +29,7 @@
     "nib":  "0.8.2",
     "cssom": "0.2.5",
 
-    "jamjs": "0.2.7"
+    "jamjs": "0.2.8"
   },
   "devDependencies": {
     "grunt": "~0.3.17"
