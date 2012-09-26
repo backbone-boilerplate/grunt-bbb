@@ -54,6 +54,12 @@ module.exports = function(grunt) {
         return grunt.helper("stylus", contents, options, function(css) {
           output += css;
         });
+
+      // Parse LESS files.
+      } else if (path.extname(filepath).slice(1) === "less") {
+        return grunt.helper("less", contents, options, function(css) {
+          output += css;
+        });
       }
 
       // Add vanilla CSS files.

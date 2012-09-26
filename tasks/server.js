@@ -86,6 +86,21 @@ module.exports = function(grunt) {
       });
     });
 
+    // Process LESS stylesheets.
+    site.get(/.less$/, function(req, res) {
+      var url = req.url.split("assets/css/")[1];
+      var file = path.join("assets/css", url);
+
+      fs.readFile(file, function(err, contents) {
+        grunt.helper("less", contents.toString(), {
+          paths: ["assets/css/"]
+        }, function(css) {
+          res.header("Content-type", "text/css");
+          res.send(css);
+        });
+      });
+    });
+
     // Map static folders.
     Object.keys(options.folders).sort().reverse().forEach(function(key) {
       site.get(root + key + "/*", function(req, res, next) {
