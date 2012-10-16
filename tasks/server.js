@@ -122,6 +122,36 @@ module.exports = function(grunt) {
 
     // Serve favicon.ico.
     site.use(express.favicon(options.favicon));
+
+    /**
+     * Allows the server to proxy a URL to bypass Same Origin Policies for
+     * easier API testing.
+     *
+     * proxies everything under /api out to http://host_running_api.local/api
+     * server: {
+     *  proxies: {
+     *    'api': {
+     *      host: 'host_running_api.local',
+     *      port: 80, // optional
+     *      https: false // optional
+     *    }
+     *  }
+     * }
+     */
+    if (_.isObject(options.proxies)) {
+      httpProxy = require('http-proxy');
+      Object.keys(options.proxies).sort().reverse().forEach(function(key) {
+
+        proxy = new httpProxy.HttpProxy({
+          changeOrigin: true,
+          target: options.proxies[key]
+        })
+
+        site.all(root + key + '/*', function(req, res) {
+          proxy.proxyRequest(req, res)
+        })
+      });
+    }
     
     // Ensure all routes go home, client side app..
     site.all("*", function(req, res) {
