@@ -3,6 +3,11 @@ var grunt = require("grunt");
 var task = process.argv[2];
 var jamTasks = ["install", "ls", "remove", "upgrade", "search", "rebuild"];
 
+// Works for now...
+process.exit = function() {
+  process.emit("attemptedExit");
+};
+
 // Preload all custom tasks.
 grunt.npmTasks([
   // Load grunt-contrib used for a majority of the tasks.

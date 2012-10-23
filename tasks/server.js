@@ -76,6 +76,10 @@ module.exports = function(grunt) {
       var url = req.url.split("assets/css/")[1];
       var file = path.join("assets/css", url);
 
+      process.once("attemptedExit", function() {
+        res.send(500);
+      });
+
       fs.readFile(file, function(err, contents) {
         grunt.helper("stylus", contents.toString(), {
           paths: ["assets/css/", require("nib").path]
@@ -90,6 +94,10 @@ module.exports = function(grunt) {
     site.get(/.less$/, function(req, res) {
       var url = req.url.split("assets/css/")[1];
       var file = path.join("assets/css", url);
+
+      process.once("attemptedExit", function() {
+        res.send(500);
+      });
 
       fs.readFile(file, function(err, contents) {
         grunt.helper("less", contents.toString(), {
