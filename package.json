@@ -24,7 +24,7 @@
     "express": "2.5.9",
 
     "cdir": "0.1.2",
-    "phantom": "0.3.5"
+    "phantom": "git://github.com/amir20/phantomjs-node.git#6a2333da07b55f19ad6706768836800985899d54"
   },
   "devDependencies": {
     "grunt": "~0.3.10"
