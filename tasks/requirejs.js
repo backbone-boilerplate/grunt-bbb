@@ -21,6 +21,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask("requirejs", "Build a RequireJS project.", function(prop) {
     var options = grunt.config("requirejs") || {};
+    var done = this.async();
 
     // Merge passed options into defaults
     options = _.extend({}, {
@@ -38,6 +39,8 @@ module.exports = function(grunt) {
     grunt.helper("r.js", options, function(response) {
       // Print out response
       log.writeln(response);
+
+      done();
     });
   });
 
