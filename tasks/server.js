@@ -117,7 +117,7 @@ module.exports = function(grunt) {
         // If there are query parameters, remove them.
         filename = filename.split("?")[0];
 
-        res.sendfile(path.join(options.folders[key] + filename));
+        res.sendfile(__dirname + path.join(options.folders[key] + filename));
       });
     });
 
