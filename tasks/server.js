@@ -78,7 +78,7 @@ module.exports = function(grunt) {
 
       fs.readFile(file, function(err, contents) {
         grunt.helper("stylus", contents.toString(), {
-          paths: ["assets/css/"]
+          paths: ["assets/css/", require("nib").path]
         }, function(css) {
           res.header("Content-type", "text/css");
           res.send(css);

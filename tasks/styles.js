@@ -34,6 +34,12 @@ module.exports = function(grunt) {
       return log.write("No css imports defined.");
     }
 
+    if (!options.paths) {
+      options.paths = [];
+    }
+
+    options.paths.push(require("nib").path);
+
     // Iterate over the CSS rules, reducing to only @imports, then apply the
     // correct prefixed path to each file.  Finally, process each file and
     // concat into the output file.
