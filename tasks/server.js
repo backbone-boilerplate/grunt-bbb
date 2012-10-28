@@ -105,7 +105,9 @@ module.exports = function(grunt) {
     Object.keys(options.folders).sort().reverse().forEach(function(key) {
       site.get(root + key + "/*", function(req, res, next) {
         // Find filename.
-        var filename = req.url.slice((root + key).length);
+        var filename = req.url.slice((root + key).length)
+        // If there are query parameters, remove them.
+        filename = filename.split("?")[0];
 
         res.sendfile(path.join(options.folders[key] + filename));
       });
