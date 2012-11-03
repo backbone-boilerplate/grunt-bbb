@@ -23,6 +23,7 @@
     "requirejs": "2.1.1",
     "handlebars": "1.0.7",
     "express": "2.5.9",
+    "http-proxy": "0.8.3",
 
     "stylus": "0.30.1",
     "nib":  "0.8.2",
