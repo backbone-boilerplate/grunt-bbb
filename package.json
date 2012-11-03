@@ -1,7 +1,7 @@
 {
   "name": "bbb",
   "description": "Backbone Boilerplate Build Tool",
-  "version": "0.1.15",
+  "version": "0.1.16",
   "homepage": "https://github.com/backbone-boilerplate/grunt-bbb",
   "author": {
     "name": "Tim Branyen (@tbranyen)",
