@@ -11,9 +11,11 @@ process.exit = function() {
 // Preload all custom tasks.
 grunt.npmTasks([
   // Load grunt-contrib used for a majority of the tasks.
-  "grunt-contrib",
+  //"grunt-contrib",
   // Load grunt-jasmine-task used for testing Jasmine.
   "grunt-jasmine-task",
+  // Load grunt-targethtml to allow seamless targeted builds.
+  "grunt-targethtml",
   // Load the remaining tasks (init/server/requirejs) from bbb.
   "bbb"
 ]);
