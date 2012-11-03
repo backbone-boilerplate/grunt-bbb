@@ -64,7 +64,7 @@ function displayHelp() {
       return [name, info.grey];
     });
 
-    grunt.log.header(("Available Tasks:").yellow);
+    grunt.log.header(("Grunt Tasks:").yellow);
     grunt.log.writeln();
 
     tasks.forEach(function(a) {

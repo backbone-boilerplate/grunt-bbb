@@ -18,6 +18,7 @@ module.exports = function(grunt) {
     var options, done;
     var props = ["server"];
     var args = this.args;
+    var protocol = "http";
 
     // Only keep alive if watch is not set.
     done = args[args.length-1] === "watch" ? function() {} : this.async();
@@ -30,6 +31,7 @@ module.exports = function(grunt) {
       favicon: "./favicon.ico",
       index: "./index.html",
 
+      ssl: process.env.SSL || false,
       port: process.env.PORT || 8000,
       host: process.env.HOST || "127.0.0.1"
     });
@@ -56,7 +58,13 @@ module.exports = function(grunt) {
     // Fail task if errors were logged
     if (grunt.errors) { return false; }
 
-    log.writeln("Listening on http://" + options.host + ":" + options.port);
+    // Change protocol to https.
+    if (options.ssl) {
+      protocol = "https";
+    }
+
+    log.writeln("Listening on " + protocol + "://" + options.host + ":" +
+      options.port);
   });
 
   grunt.registerHelper("server", function(options) {
@@ -65,6 +73,7 @@ module.exports = function(grunt) {
     var path = require("path");
     var express = require("express");
     var httpProxy = require("http-proxy");
+    var https = require("https");
 
     // If the server is already available use it.
     var site = options.server ? options.server() : express();
@@ -169,8 +178,27 @@ module.exports = function(grunt) {
       fs.createReadStream(options.index).pipe(res);
     });
 
-    // Actually listen
-    site.listen(options.port, options.host);
+    // Actually listen.
+    if (!options.ssl) {
+      return site.listen(options.port, options.host);
+    }
+
+    var key = fs.readFileSync(__dirname + "/server/server.key");
+    var cert = fs.readFileSync(__dirname + "/server/server.crt");
+
+    if (options.ssl.key) {
+      key = options.ssl.key;
+    }
+
+    if (options.ssl.cert) {
+      cert = options.ssl.cert;
+    }
+
+    // Listen on non secure.
+    https.createServer({
+      key: key,
+      cert: cert
+    }, site).listen(options.port, options.host);
   });
 
 };
