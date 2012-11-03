@@ -61,6 +61,11 @@ module.exports = function(grunt) {
       options.paths = [];
     }
 
+    // Backwards compatibility, this path used to be hardcoded.
+    if (!options.prefix) {
+      options.prefix = "assets/css/";
+    }
+
     options.paths.push(require("nib").path);
 
     // Iterate over the CSS rules, reducing to only @imports, then apply the
@@ -74,7 +79,7 @@ module.exports = function(grunt) {
 
       return paths;
     }, []).map(function(path) {
-      return "assets/css/" + path;
+      return options.prefix + path;
     }).concat(options.additional || []).forEach(function(filepath) {
       var contents = file.read(filepath);
 
