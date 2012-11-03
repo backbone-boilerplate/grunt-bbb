@@ -10,14 +10,20 @@ process.exit = function() {
 
 // Preload all custom tasks.
 grunt.npmTasks([
-  // Load grunt-contrib used for a majority of the tasks.
-  //"grunt-contrib",
   // Load grunt-jasmine-task used for testing Jasmine.
   "grunt-jasmine-task",
   // Load grunt-targethtml to allow seamless targeted builds.
   "grunt-targethtml",
   // Load the remaining tasks (init/server/requirejs) from bbb.
-  "bbb"
+  "bbb",
+
+  // Load grunt-contrib tasks.
+  "grunt-contrib-clean",
+  "grunt-contrib-copy",
+  "grunt-contrib-jst",
+  "grunt-contrib-less",
+  "grunt-contrib-mincss",
+  "grunt-contrib-stylus"
 ]);
 
 // Draw the help screen.
@@ -39,26 +45,10 @@ function displayHelp() {
   });
 
   var widths = [1, col1len, 2, 76 - col1len];
-
-  var gruntTasks = Object.keys(grunt.task._tasks).slice(0, 8);
-  var contribList = Object.keys(grunt.task._tasks).slice(8, 20);
-  var jasmineList = Object.keys(grunt.task._tasks).slice(20, 21);
-  var tasksList = Object.keys(grunt.task._tasks).slice(21);
+  var tasksList = Object.keys(grunt.task._tasks).sort();
 
   if (tasksList.length) {
-    displayTasks("Backbone Boilerplate", tasksList);
-  }
-
-  if (jasmineList.length) {
-    displayTasks("Grunt Jasmine", jasmineList);
-  }
-
-  if (contribList.length) {
-    displayTasks("Grunt Contrib", contribList);
-  }
-  
-  if (gruntTasks.length) {
-    displayTasks("Grunt", gruntTasks);
+    displayTasks("Backbone Boilerplate ", tasksList);
   }
 
   function displayTasks(name, tasksList) {
@@ -66,10 +56,15 @@ function displayHelp() {
       col1len = Math.max(col1len, name.length);
       var info = grunt.task._tasks[name].info;
 
+      // Ensure the message ends with a `.`.
+      if (info[info.length-1] !== ".") {
+        info += ".";
+      }
+
       return [name, info.grey];
     });
 
-    grunt.log.header((name + " tasks:").yellow);
+    grunt.log.header(("Available Tasks:").yellow);
     grunt.log.writeln();
 
     tasks.forEach(function(a) {

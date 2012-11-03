@@ -64,9 +64,10 @@ module.exports = function(grunt) {
     var fs = require("fs");
     var path = require("path");
     var express = require("express");
+    var httpProxy = require("http-proxy");
 
     // If the server is already available use it.
-    var site = options.server ? options.server() : express.createServer();
+    var site = options.server ? options.server() : express();
 
     // Allow users to override the root.
     var root = _.isString(options.root) ? options.root : "/";
@@ -117,7 +118,7 @@ module.exports = function(grunt) {
         // If there are query parameters, remove them.
         filename = filename.split("?")[0];
 
-        res.sendfile(__dirname + path.join(options.folders[key] + filename));
+        res.sendfile(path.join(options.folders[key] + filename));
       });
     });
 
@@ -133,33 +134,33 @@ module.exports = function(grunt) {
     // Serve favicon.ico.
     site.use(express.favicon(options.favicon));
 
-    /**
+    /*
      * Allows the server to proxy a URL to bypass Same Origin Policies for
      * easier API testing.
      *
-     * proxies everything under /api out to http://host_running_api.local/api
+     * Proxies everything under `/api` out to `http://local/api`.
      * server: {
-     *  proxies: {
-     *    'api': {
-     *      host: 'host_running_api.local',
-     *      port: 80, // optional
-     *      https: false // optional
-     *    }
-     *  }
+     *   proxies: {
+     *     "api": {
+     *       host: "host_running_api.local",
+     *
+     *       // Both are optional.
+     *       port: 80,
+     *       https: false
+     *     }
+     *   }
      * }
      */
     if (_.isObject(options.proxies)) {
-      httpProxy = require('http-proxy');
       Object.keys(options.proxies).sort().reverse().forEach(function(key) {
-
-        proxy = new httpProxy.HttpProxy({
+        var proxy = new httpProxy.HttpProxy({
           changeOrigin: true,
           target: options.proxies[key]
-        })
+        });
 
-        site.all(root + key + '/*', function(req, res) {
-          proxy.proxyRequest(req, res)
-        })
+        site.all(root + key + "/*", function(req, res) {
+          proxy.proxyRequest(req, res);
+        });
       });
     }
     

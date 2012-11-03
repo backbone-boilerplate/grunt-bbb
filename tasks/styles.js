@@ -18,6 +18,29 @@ module.exports = function(grunt) {
   // Shorthand Grunt functions
   var log = grunt.log;
   var file = grunt.file;
+  
+  // Needed for backwards compatibility with Stylus task.
+  grunt.registerHelper("stylus", function(source, options, callback) {
+    var s = require("stylus")(source);
+    
+    // load nib if available
+    try {
+      s.use(require("nib")());
+    } catch (e) {}
+
+    _.each(options, function(value, key) {
+      s.set(key, value);
+    });
+
+    s.render(function(err, css) {
+      if (err) {
+        grunt.log.error(err);
+        grunt.fail.warn("Stylus failed to compile.");
+      } else {
+        callback(css);
+      }
+    });
+  });
 
   grunt.registerMultiTask("styles", "Compile project styles.", function() {
     // Output file.
