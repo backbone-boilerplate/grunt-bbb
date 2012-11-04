@@ -42,7 +42,8 @@ module.exports = function(grunt) {
     options.folders = _.defaults(options.folders, {
       app: "./app",
       assets: "./assets",
-      dist: "./dist"
+      dist: "./dist",
+      vendor: "./vendor"
     });
 
     options.files = options.files || {};

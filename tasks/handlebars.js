@@ -30,10 +30,7 @@ module.exports = function(grunt) {
   grunt.registerMultiTask("handlebars", "Compile handlebars templates and partials.", function() {
 
     var options = grunt.helper("options", this, {namespace: "JST"});
-    var handlebarsOptions ={};
-    if(!!this.data.handlebarsOptions){
-      handlebarsOptions=this.data.handlebarsOptions;
-    };
+    var handlebarsOptions = this.data.options || {};
 
     grunt.verbose.writeflags(options, "Options");
 
@@ -60,7 +57,7 @@ module.exports = function(grunt) {
         src = grunt.file.read(file);
 
         try {
-          compiled = require("handlebars").precompile(src,handlebarsOptions);
+          compiled = require("handlebars").precompile(src, handlebarsOptions);
           // if configured to, wrap template in Handlebars.template call
           if(options.wrapped) {
             compiled = "Handlebars.template("+compiled+")";
