@@ -87,6 +87,7 @@ module.exports = function(grunt) {
       var url = req.url.split("assets/css/")[1];
       var file = path.join("assets/css", url);
 
+      process.removeAllListeners("attemptedExit");
       process.once("attemptedExit", function() {
         res.send(500);
       });

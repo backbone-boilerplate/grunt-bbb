@@ -26,7 +26,7 @@ module.exports = function(grunt) {
   grunt.registerTask("repl", "Run app through REPL.", function(prop) {
     var done = this.async();
     var helpers = require("grunt-lib-contrib").init(grunt);
-    var options = helpers.options(this, {
+    var options = _.defaults(grunt.config("repl"), {
       url: null
     });
 
@@ -45,7 +45,7 @@ module.exports = function(grunt) {
       var url = options.url || data.split(" ").pop();
 
       // Run the bbb repl.
-      grunt.helper("bbb:repl", url, options.prefix);
+      grunt.helper("bbb:repl", url, options);
     });
 
     // Ensure the child process dies with the master.
@@ -54,9 +54,10 @@ module.exports = function(grunt) {
     });
   });
 
-  grunt.registerHelper("bbb:repl", function(url, name) {
+  grunt.registerHelper("bbb:repl", function(url, options) {
     // Set up the prompt.
     var fragment;
+    var name = options.prefix;
     var prefix = function() { return name + " (" + (fragment || "/") + ") ~ " };
     var read = readline.createInterface(process.stdin, process.stdout);
 
@@ -64,13 +65,11 @@ module.exports = function(grunt) {
     phantom.create(function(ph) {
       // Create a new Page.
       ph.createPage(function(page) {
-        // Set a normal viewport size.
-        page.viewportSize = { width: 1024, height: 768 };
-
-        page.set('viewportSize', {width:1024,height:768})
+        // Set a default viewport size.
+        page.set("viewportSize", options.res || { width: 1024, height: 768 });
 
         // Open the local BBB instance.
-        page.open("http://127.0.0.1:8000", function(status) {
+        page.open(url, function(status) {
           // Inject the helper JS.
           page.injectJs(__dirname + "/repl/helper.js");
 
