@@ -43,7 +43,9 @@ module.exports = function(grunt) {
     // Add the callback last.
     args.push(function(err, data) {
       // If there is data worth logging, log it.
-      console.log(data);
+      if (!Array.isArray(data)) {
+        console.log(data);
+      }
     });
 
     // Execute the task with correct arguments.

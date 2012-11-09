@@ -33,7 +33,14 @@ module.exports = function(grunt) {
 
       // Ensure modules are inserted
       skipModuleInsertion: false,
+
+      // JamJS configuration file
+      jamConfig: "vendor/jam/require.config.js"
     }, options);
+
+    if (fs.existsSync(process.cwd() + "/" + options.jamConfig)) {
+      _.extend(options, require(process.cwd() + "/" + options.jamConfig));
+    }
 
     // Run the r.js helper
     grunt.helper("r.js", options, function(response) {

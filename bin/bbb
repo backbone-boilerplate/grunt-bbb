@@ -14,8 +14,6 @@ grunt.npmTasks([
   "grunt-jasmine-task",
   // Load grunt-targethtml to allow seamless targeted builds.
   "grunt-targethtml",
-  // Load the remaining tasks (init/server/requirejs) from bbb.
-  "bbb",
 
   // Load grunt-contrib tasks.
   "grunt-contrib-clean",
@@ -23,7 +21,10 @@ grunt.npmTasks([
   "grunt-contrib-jst",
   "grunt-contrib-less",
   "grunt-contrib-mincss",
-  "grunt-contrib-stylus"
+  "grunt-contrib-stylus",
+
+  // Load the remaining tasks (init/server/requirejs) from bbb.
+  "bbb"
 ]);
 
 // Draw the help screen.

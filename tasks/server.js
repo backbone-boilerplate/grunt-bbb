@@ -82,10 +82,13 @@ module.exports = function(grunt) {
     // Allow users to override the root.
     var root = _.isString(options.root) ? options.root : "/";
 
+    // Where to find styles.
+    var prefix = options.prefix || "assets/css/";
+
     // Process stylus stylesheets.
     site.get(/.styl$/, function(req, res) {
-      var url = req.url.split("assets/css/")[1];
-      var file = path.join("assets/css", url);
+      var url = req.url.split(prefix)[1];
+      var file = path.join(prefix, url);
 
       process.removeAllListeners("attemptedExit");
       process.once("attemptedExit", function() {
@@ -93,8 +96,12 @@ module.exports = function(grunt) {
       });
 
       fs.readFile(file, function(err, contents) {
+        if (err) {
+          return console.log("Unable to read: " + file);
+        }
+
         grunt.helper("stylus", contents.toString(), {
-          paths: ["assets/css/", require("nib").path]
+          paths: [prefix, require("nib").path]
         }, function(css) {
           res.header("Content-type", "text/css");
           res.send(css);
@@ -104,8 +111,8 @@ module.exports = function(grunt) {
 
     // Process LESS stylesheets.
     site.get(/.less$/, function(req, res) {
-      var url = req.url.split("assets/css/")[1];
-      var file = path.join("assets/css", url);
+      var url = req.url.split(prefix)[1];
+      var file = path.join(prefix, url);
 
       process.once("attemptedExit", function() {
         res.send(500);
@@ -113,7 +120,7 @@ module.exports = function(grunt) {
 
       fs.readFile(file, function(err, contents) {
         grunt.helper("less", contents.toString(), {
-          paths: ["assets/css/"]
+          paths: [prefix]
         }, function(css) {
           res.header("Content-type", "text/css");
           res.send(css);
@@ -170,6 +177,7 @@ module.exports = function(grunt) {
         });
 
         site.all(root + key + "/*", function(req, res) {
+          req.url = req.url.slice((root + key).length);
           proxy.proxyRequest(req, res);
         });
       });

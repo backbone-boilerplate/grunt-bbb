@@ -26,7 +26,7 @@ module.exports = function(grunt) {
   grunt.registerTask("repl", "Run app through REPL.", function(prop) {
     var done = this.async();
     var helpers = require("grunt-lib-contrib").init(grunt);
-    var options = _.defaults(grunt.config("repl"), {
+    var options = _.defaults({}, grunt.config("repl"), {
       url: null
     });
 
