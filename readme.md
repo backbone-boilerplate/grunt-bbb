@@ -53,19 +53,6 @@ These commands will build out files for you.
 
 Creates a bare boilerplate project.
 
-#### `init:tutorial` (bbb) ####
-
-*Run bbb init before this command*
-
-Creates a boilerplate which contains the tutorial.
-
-#### `init:todomvc` (bbb) ####
-
-*Run bbb init before this command*
-
-Creates a boilerplate which contains the TodoMVC application that utilizes
-LayoutManager.
-
 #### `init:module` (bbb) ####
 
 *Run bbb init before this command*
