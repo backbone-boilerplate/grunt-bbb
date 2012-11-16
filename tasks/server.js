@@ -177,7 +177,10 @@ module.exports = function(grunt) {
         });
 
         site.all(root + key + "/*", function(req, res) {
-          req.url = req.url.slice((root + key).length);
+          if (options.passthru) {
+            req.url = req.url.slice((root + key).length);
+          }
+
           proxy.proxyRequest(req, res);
         });
       });
