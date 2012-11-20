@@ -42,6 +42,23 @@ module.exports = function(grunt) {
     });
   });
 
+  // Needed for backwards compatibility with LESS task.
+  grunt.registerHelper("less", function(source, options, callback) {
+    var less = require("less");
+
+    var css;
+    var parser = new less.Parser();
+
+    parser.parse(source, function(parse_err, tree) {
+      try {
+        css = tree.toCSS(options);
+        callback(css, null);
+      } catch (e) {
+        callback(css, true);
+      }
+    });
+  });
+
   grunt.registerMultiTask("styles", "Compile project styles.", function() {
     // Output file.
     var output = "";

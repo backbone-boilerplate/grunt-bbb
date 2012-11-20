@@ -111,7 +111,7 @@ module.exports = function(grunt) {
 
     // Process LESS stylesheets.
     site.get(/.less$/, function(req, res) {
-      var url = req.url.split(prefix)[1];
+      var url = req.url.split(prefix)[1] || "../.." + req.url;
       var file = path.join(prefix, url);
 
       process.once("attemptedExit", function() {
