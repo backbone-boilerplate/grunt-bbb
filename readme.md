@@ -1,5 +1,11 @@
 Backbone Boilerplate framework tool.
 
+## Installing 0.2.0 Alpha Notes ##
+
+Before you can install the latest alpha using the directions below, please make
+sure you have Git installed.  There is a dependency that requires a `git clone`
+under the hood, and will fail without it.
+
 ## Getting Started ##
 
 Install this [Grunt](https://github.com/cowboy/grunt) plugin with:
