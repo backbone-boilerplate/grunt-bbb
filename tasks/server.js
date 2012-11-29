@@ -179,6 +179,7 @@ module.exports = function(grunt) {
         site.all(root + key + "/*", function(req, res) {
           if (options.passthru) {
             req.url = req.url.slice((root + key).length);
+            console.log(req.url);
           }
 
           proxy.proxyRequest(req, res);

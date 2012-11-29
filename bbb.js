@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 var grunt = require("grunt");
 var task = process.argv[2];
 var jamTasks = ["install", "ls", "remove", "upgrade", "search", "rebuild"];
@@ -22,6 +23,7 @@ grunt.npmTasks([
   "grunt-contrib-less",
   "grunt-contrib-mincss",
   "grunt-contrib-stylus",
+  "grunt-contrib-uglify",
 
   // Load the remaining tasks (init/server/requirejs) from bbb.
   "bbb"
@@ -29,7 +31,7 @@ grunt.npmTasks([
 
 // Draw the help screen.
 function displayHelp() {
-  var pkg = require(__dirname + "/../package.json");
+  var pkg = require("./package.json");
   grunt.log.writeln();
   grunt.log.writeln(pkg.description);
   grunt.log.writeln((" " + pkg.name + " ").green.inverse

@@ -48,7 +48,7 @@
     "node": ">= 0.6.0"
   },
   "main": "grunt.js",
-  "bin": "bin/bbb",
+  "bin": "bbb.js",
   "scripts": {
     "test": "grunt test"
   }
