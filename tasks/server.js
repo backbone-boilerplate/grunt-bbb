@@ -109,7 +109,11 @@ module.exports = function(grunt) {
         // If there are query parameters, remove them.
         filename = filename.split("?")[0];
 
-        res.sendfile(path.join(options.folders[key] + filename));
+        res.sendfile(path.join(options.folders[key] + filename), {}, function(err) {
+          if (err) {
+            res.send(404);
+          }
+        });
       });
     });
 
@@ -117,7 +121,11 @@ module.exports = function(grunt) {
     if (_.isObject(options.files)) {
       Object.keys(options.files).sort().reverse().forEach(function(key) {
         site.get(root + key, function(req, res) {
-          return res.sendfile(options.files[key]);
+          return res.sendfile(options.files[key], {}, function(err) {
+            if (err) {
+              res.send(404);
+            }
+          });
         });
       });
     }
