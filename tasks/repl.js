@@ -163,7 +163,11 @@ module.exports = function(grunt) {
               console.log(result);
 
               page.evaluate(function() {
-                return Backbone.history.fragment;
+                if (typeof window.Backbone !== "undefined") {
+                  return Backbone.history.fragment;
+                } else {
+                  return location.hash;
+                }
               }, function(frag) {
                 fragment = frag;
 

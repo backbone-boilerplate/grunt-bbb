@@ -1,3 +1,4 @@
+var global = this;
 var token = {};
 
 function normalize(obj) {
@@ -34,5 +35,7 @@ function normalize(obj) {
 }
 
 function nav(url) {
-  Backbone.history.navigate(url, true);
+  if (typeof global.Backbone !== "undefined") {
+    global.Backbone.history.navigate(url, true);
+  }
 }

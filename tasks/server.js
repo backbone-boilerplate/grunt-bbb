@@ -19,12 +19,18 @@ module.exports = function(grunt) {
     var props = ["server"];
     var args = this.args;
     var protocol = "http";
+    var isWatchMode = args[args.length-1] === "watch";
 
     // Only keep alive if watch is not set.
-    done = args[args.length-1] === "watch" ? function() {} : this.async();
+    done = isWatchMode ? undefined : this.async();
 
     // If a prop was passed as the argument, use that sub-property of server.
     if (prop) { props.push(prop); }
+
+    // Remove the `watch` property.
+    if (isWatchMode) {
+      props.pop();
+    }
 
     // Defaults set for server values
     options = _.defaults(grunt.config(props) || {}, {

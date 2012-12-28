@@ -35,7 +35,7 @@ module.exports = function(grunt) {
       skipModuleInsertion: false,
 
       // JamJS configuration file
-      jamConfig: "vendor/jam/require.config.js"
+      //jamConfig: "vendor/jam/require.config.js"
     }, options);
 
     if (fs.existsSync(process.cwd() + "/" + options.jamConfig)) {
