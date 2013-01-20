@@ -15,7 +15,7 @@ module.exports = function(grunt) {
   var path = require("path");
   // Include requirejs
   var requirejs = require("requirejs");
-  var _ = grunt.utils._;
+  var _ = grunt.util._;
   // Shorthand Grunt functions
   var log = grunt.log;
 
@@ -58,6 +58,7 @@ module.exports = function(grunt) {
     grunt.helper("list", path.normalize(baseUrl + "/"));
   });
 
+  /*
   grunt.registerHelper("r.js", function(options, done) {
     requirejs.optimize(options, done);
   });
@@ -155,5 +156,6 @@ module.exports = function(grunt) {
 
     return tree.join("\n");
   });
+  */
 
 };

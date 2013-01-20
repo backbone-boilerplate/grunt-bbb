@@ -14,10 +14,11 @@ module.exports = function(grunt) {
   var path = require("path");
   // Third-party libs.
   var cssom = require("cssom");
-  var _ = grunt.utils._;
+  var _ = grunt.util._;
   // Shorthand Grunt functions
   var log = grunt.log;
   var file = grunt.file;
+  /*
   
   // Needed for backwards compatibility with Stylus task.
   grunt.registerHelper("stylus", function(source, options, callback) {
@@ -123,5 +124,6 @@ module.exports = function(grunt) {
     // Success message.
     log.writeln("File " + this.target + " created.");
   });
+  */
 
 };

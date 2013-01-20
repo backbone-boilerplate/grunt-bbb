@@ -10,7 +10,7 @@
 
 module.exports = function(grunt) {
 
-  var _ = grunt.utils._;
+  var _ = grunt.util._;
   // Shorthand Grunt functions
   var log = grunt.log;
 
@@ -74,6 +74,7 @@ module.exports = function(grunt) {
       options.port);
   });
 
+/*
   grunt.registerHelper("server", function(options) {
     // Require libraries.
     var fs = require("fs");
@@ -175,7 +176,7 @@ module.exports = function(grunt) {
      *   }
      * }
      */
-    if (_.isObject(options.proxies)) {
+    /*if (_.isObject(options.proxies)) {
       Object.keys(options.proxies).sort().reverse().forEach(function(key) {
         var proxy = new httpProxy.HttpProxy({
           changeOrigin: true,
@@ -220,5 +221,6 @@ module.exports = function(grunt) {
       cert: cert
     }, site).listen(options.port, options.host);
   });
+  */
 
 };

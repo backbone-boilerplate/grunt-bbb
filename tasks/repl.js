@@ -20,7 +20,7 @@ module.exports = function(grunt) {
   // Include phantom.
   var phantom = require("phantom");
   // Shorthand Grunt functions
-  var _ = grunt.utils._;
+  var _ = grunt.util._;
   var log = grunt.log;
 
   grunt.registerTask("repl", "Run app through REPL.", function(prop) {
@@ -54,6 +54,7 @@ module.exports = function(grunt) {
     });
   });
 
+/*
   grunt.registerHelper("bbb:repl", function(url, options) {
     // Set up the prompt.
     var fragment;
@@ -191,6 +192,7 @@ module.exports = function(grunt) {
       show();
     }
   });
+  */
 
 };
 
