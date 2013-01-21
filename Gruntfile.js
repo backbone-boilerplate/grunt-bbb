@@ -35,8 +35,14 @@ module.exports = function(grunt) {
 
   // Load local tasks.
   grunt.loadTasks("tasks");
+
+  // Bundled NPM tasks.
+  grunt.loadNpmTasks("grunt-targethtml");
+
+  // For development.
   grunt.loadNpmTasks("grunt-contrib-jshint");
   grunt.loadNpmTasks("grunt-contrib-nodeunit");
+  grunt.loadNpmTasks("grunt-contrib-stylus");
 
   // Default task.
   grunt.registerTask("default", ["jshint", "nodeunit"]);

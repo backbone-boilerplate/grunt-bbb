@@ -14,148 +14,17 @@ module.exports = function(grunt) {
   var fs = require("fs");
   var path = require("path");
   // Include requirejs
-  var requirejs = require("requirejs");
   var _ = grunt.util._;
   // Shorthand Grunt functions
   var log = grunt.log;
 
-  grunt.registerTask("requirejs", "Build a RequireJS project.", function(prop) {
-    var options = grunt.config("requirejs") || {};
-    var done = this.async();
-
-    // Merge passed options into defaults
-    options = _.extend({}, {
-      // Do not optimize
-      optimize: "none",
-
-      // Show warnings
-      logLevel: 2,
-
-      // Ensure modules are inserted
-      skipModuleInsertion: false,
-
-      // JamJS configuration file
-      //jamConfig: "vendor/jam/require.config.js"
-    }, options);
-
-    if (fs.existsSync(process.cwd() + "/" + options.jamConfig)) {
-      _.extend(options, require(process.cwd() + "/" + options.jamConfig));
-    }
-
-    // Run the r.js helper
-    grunt.helper("r.js", options, function(response) {
-      // Print out response
-      log.writeln(response);
-
-      done();
-    });
-  });
-
   grunt.registerTask("list", "Show module dependencies", function(prop) {
     var options = grunt.config("requirejs") || {};
     var baseUrl = options.baseUrl || "app";
-    // ensure trailing slash
-    grunt.helper("list", path.normalize(baseUrl + "/"));
+    var done = this.async();
+
+    require("./lib/list").init(grunt).list(path.normalize(baseUrl + "/"), done);
   });
 
-  /*
-  grunt.registerHelper("r.js", function(options, done) {
-    requirejs.optimize(options, done);
-  });
-
-  grunt.registerHelper("list", function(appDir) {
-    var jsRegExp = /\.js$/;
-
-    requirejs.tools.useLib(function(require) {
-      require(["parse"], function(parse) {
-        var deps = {};
-        var files = [];
-
-        // Recursively find all files inside the application directory
-        function recurse(dir) {
-          fs.readdirSync(dir).forEach(function(name) {
-            var subdir = path.resolve(dir, name);
-            var stats = fs.statSync(subdir);
-            
-            if (stats.isDirectory()) {
-              recurse(subdir);
-            } else if (jsRegExp.test(name)) {
-              files.push(subdir);
-            }
-          });
-        }
-
-        // Start with the app directory e.g. app/
-        recurse(appDir);
-
-        files.forEach(function(name) {
-          var contents = fs.readFileSync(name, "utf8");
-          var shortname = name.slice(name.indexOf(appDir));
-
-          deps[shortname] = parse.findDependencies(name,
-            contents);
-        });
-        
-        console.log(grunt.helper("tree", deps));
-      });
-    });
-  });
-
-  grunt.registerHelper("tree", function(obj) {
-    var tree = [""];
-
-    function spaces(len, end, start) {
-      start = start || " ";
-      end = end || " ";
-
-      if (!start) {
-        return Array(len+1).join(Array(3).join(end));
-      } else {
-        return Array(len+1).join(start + Array(2).join(end));
-      }
-    }
-
-    function traverse(obj, depth) {
-      _.each(obj, function(val, key) {
-        var len;
-
-        if (_.isArray(val)) {
-          tree.push("\u251c" + spaces(depth) + " " + key);
-
-          len = val.length;
-
-          _.each(val, function(val, i) {
-            if (_.isString(val)) {
-              if (i == len-1) {
-                tree.push("\u2502 " + spaces(depth+1, "\u2500", "\u2514") + " "
-                  + val);
-              } else {
-                tree.push("\u2502 " + spaces(depth+1, "\u2500", "\u251c") + " "
-                  + val);
-              }
-            } else if (_.isObject(val)) {
-              traverse(obj, depth+1);
-            }
-          });
-
-          tree.push("\u2502");
-
-        } else if (_.isObject(val)) {
-          tree.push(spaces(depth) + key);
-          traverse(val, depth+1);
-        } else {
-          tree.push(spaces(depth) + key);
-        }
-
-      });
-    }
-
-    traverse(obj, 0);
-
-    tree.pop();
-
-    return tree.join("\n");
-  });
-  */
 
 };

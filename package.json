@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "grunt-contrib": "~0.3",
-    "grunt-targethtml": "0.1.3",
+    "grunt-targethtml": "0.2.0",
     "grunt-jasmine-task": "0.2.3",
     "requirejs": "2.1.2",
     "express": "3.0.5",
@@ -30,14 +30,14 @@
     "grunt-lib-phantomjs": "0.1.0",
     "cdir": "0.1.2"
   },
+  "main": "Gruntfile.js",
   "devDependencies": {
     "grunt": "~0.4",
     "grunt-contrib-nodeunit": "~0.1.1",
     "grunt-contrib-jshint": "~0.1.0"
   },
   "keywords": [
-    "gruntplugin",
-    "gruntcollection"
+    "gruntplugin"
   ],
   "engines": {
     "node": ">= 0.8.0"
