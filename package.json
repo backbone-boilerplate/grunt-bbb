@@ -20,7 +20,7 @@
     "grunt-contrib": "0.1.7",
     "grunt-jasmine-task": "0.2.3",
 
-    "requirejs": "2.1.1",
+    "requirejs": "2.1.4",
     "handlebars": "1.0.7",
     "express": "2.5.9",
     "http-proxy": "0.8.3",
