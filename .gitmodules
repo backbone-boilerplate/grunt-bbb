@@ -1,3 +1,0 @@
-[submodule "tasks/init"]
-	path = tasks/init
-	url = git://github.com/backbone-boilerplate/init.git
