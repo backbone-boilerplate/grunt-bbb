@@ -17,7 +17,7 @@
   },
   "peerDependencies": {
     "grunt-bbb-server": "*",
-    "grunt-bbb-requrire": "*",
+    "grunt-bbb-require": "*",
     "grunt-bbb-styles": "*"
   },
   "keywords": ["gruntplugin", "gruntcollection"],
