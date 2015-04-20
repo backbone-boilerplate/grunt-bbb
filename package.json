@@ -1,7 +1,7 @@
 {
   "name": "bbb",
   "description": "Backbone Boilerplate Build Tool",
-  "version": "0.2.0",
+  "version": "2.0.0",
   "homepage": "https://github.com/backbone-boilerplate/grunt-bbb",
   "author": {
     "name": "Tim Branyen (@tbranyen)",
@@ -16,12 +16,9 @@
     "url": "https://github.com/backbone-boilerplate/grunt-bbb/issues"
   },
   "peerDependencies": {
-    "grunt-bbb-server": "*",
-    "grunt-bbb-require": "*",
-    "grunt-bbb-styles": "*"
+    "grunt-bbb-server": "0.1.2",
+    "grunt-bbb-requirejs": "0.1.0-alpha.8",
+    "grunt-bbb-styles": "0.1.0-alpha.5"
   },
-  "keywords": ["gruntplugin", "gruntcollection"],
-  "engines": {
-    "node": ">= 0.6.0"
-  }
+  "keywords": ["gruntplugin", "gruntcollection"]
 }
